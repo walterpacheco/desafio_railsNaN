@@ -1,0 +1,24 @@
+
+
+
+<% @tasks.each_slice(3) do |tasks| %>
+    <div class="row">
+        <%tasks.each do |task| %>
+            <div class="col-lg-4 py-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="<%= task.image %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= task.title %></h5>
+                        <p class="card-text">algo ira aca</p>
+                        
+                        <%= link_to "complete",complete_path(task.id, current_user), method: :complete, class:"btn btn-outline-success" %>
+                        <%= link_to "Info", task_path(task.id), class:"btn btn-outline-info" %> 
+                    
+                    </div>
+                </div>
+            </div>
+        <% end %>
+            
+    </div>
+<% end %>
+

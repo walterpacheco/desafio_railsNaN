@@ -1,0 +1,26 @@
+<h1>My List </h1>
+
+<% @todos.each_slice(3) do |todos| %>
+    <div class="row">
+        <%todos.each do |todo| %>
+            <div class="col-lg-4 py-3">
+                <div class="card" style="width: 18rem;">
+                    <%if todo.completed %>
+                        <%= image_tag todo.task.image, class:'card-img-top undone'%>
+                    <% else %>
+                        <%= image_tag todo.task.image, class:'card-img-top'%>
+                    <% end %>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= todo.task.title %></h5>
+                        <p class="card-text">algo ira aca</p>
+                        
+                        <%= link_to "complete",complete_path(todo), method: :complete, class:"btn btn-outline-success" %>
+                        <%= link_to "Info", task_path(todo.task.id), class:"btn btn-outline-info" %> 
+                    
+                    </div>
+                </div>
+            </div>
+        <% end %>
+            
+    </div>
+<% end %>
